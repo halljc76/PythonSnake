@@ -8,20 +8,27 @@ pg.font.init()
 class GameIntro():
     
     def __init__(self):
+        '''
+        Init function for the GameIntro class that establishes many of the used variables in the program.
+        '''
         
+        # Clock object and FPS
         self.clock = pg.time.Clock()
         self.FPS = 15
         
+        # Colors
         self.WHITE = (255,255,255)
         self.BLACK = (0,0,0)
         self.GREEN = (0, 255, 0)
         self.RED = (255, 0, 0)
         self.BLUE = (0, 0, 210)
         
+        # Display parameters, Border parameters 
         self.WIDTH = self.HEIGHT = 600
         self.INTRO_BORDER_SIZE = 20
         self.BORDER_SIZE = 40
         
+        # Button parameters
         self.PLAY_COORDX = self.WIDTH // 5
         self.QUIT_COORDX = (3 * self.WIDTH) // 5
         self.PLAY_COORDY = self.QUIT_COORDY = (3 * self.HEIGHT) // 4
@@ -30,14 +37,15 @@ class GameIntro():
         self.MESSAGES = {1: 'Play!', 2: 'Quit!'}
         
         
-        
+        # Configure display
         self.display = pg.display.set_mode([self.WIDTH, self.HEIGHT])
         self.display.fill(self.WHITE)
         
+        # Font objects
         self.smallerFont = pg.font.SysFont('freesansbold.ttf', 30)
         self.largeFont = pg.font.SysFont('freesansbold.ttf', 45)
         
-        
+        # Border coordinates for rectangle objects
         self.BORDER_COORDINATES = {1: ((0,0), (self.WIDTH, self.BORDER_SIZE)),
                               2: ((0, self.BORDER_SIZE), (self.BORDER_SIZE,
                                                           self.HEIGHT)),
@@ -112,7 +120,9 @@ class GameIntro():
             (bgnX + (width // 2)), (bgnY + (height // 2)))
     
     def menu(self):
-        
+        '''
+        Menu function for the intro screen. Contains button functionality from Button class.
+        '''
         
         pg.draw.rect(self.display, self.BLUE, 
                      ((0,0), (self.WIDTH, self.INTRO_BORDER_SIZE)))
@@ -143,8 +153,13 @@ class GameIntro():
     
 
 def main():
+    '''
+    Central function for the program.
+    '''
+    
     apple = pg.image.load('apple.png')
     pg.display.set_icon(apple)
+    pg.display.set_caption('Snake')
     
     intro = GameIntro()
     game = Gameplay(intro.display, intro.WHITE, intro.GREEN, intro.WIDTH, intro.HEIGHT)
