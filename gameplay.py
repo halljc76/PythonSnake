@@ -130,6 +130,17 @@ class Gameplay():
      
     def gameLoop(self, display, width, height):
         
+        """
+         Parameters
+        ----------
+        display : pygame.Surface
+            The Screen on which the game is played.
+        width : Integer
+            The width of the display.
+        height : Integer
+            The height of the display.
+        """
+        
         self.smallerFont = pg.font.SysFont('freesansbold.ttf', 30)
         clock = pg.time.Clock()
         FPS = 15
